@@ -1,0 +1,16 @@
+
+.menu-bar {
+    text-align: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+.menu-bar li{
+    text-align: center;
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+    float: left;
+  }

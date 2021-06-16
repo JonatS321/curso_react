@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from "react";
 import './App.css';
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 
 class App extends Component {
   render() {
     return (
      <Fragment>
-      <h1>NOTEC STORE</h1>
-      <ul className="menu-bar">
-        <li>INICIO</li>
-        <li>CATALOGO</li>
-        <li>CONTACTO</li>
-        <li>FAQ</li>
-      </ul>
+        <div className="App">
+          <h1>NOTEC STORE</h1>
+        </div>
+      <NavBar/>
+      <ItemListContainer/>
      </Fragment>
       )
   }
