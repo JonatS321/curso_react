@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
+import ItemCount from "../ItemCount"
 
-class ItemListContainer extends React.Component{
+class ItemListContainer extends Component {
 
-    render(){
-        return(
-            <h1>
-                Pagina en construccion. Disculpenos.
-            </h1>
-        )
+    render() {
+        return (
+            <div>
+                <ItemCount stock={5} initial={1}/>
+                <h1>Pagina en construccion. Disculpenos.</h1>
+            </div>
+        );
     }
 }
 
-export default ItemListContainer
+export default ItemListContainer;
