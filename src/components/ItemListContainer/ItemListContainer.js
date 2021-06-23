@@ -18,6 +18,7 @@ class ItemListContainer extends Component {
             <div>
                 <ItemCount stock={5} initial={1}/>
                 <ItemList/>
+                <ItemDetailContainer/>
                 <h1>Pagina en construccion. Disculpenos.</h1>
             </div>
         );
