@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./ItemListContainer.css"
-import ItemCount from "../ItemCount";
 import ItemList from "../ItemList/ItemList";
 
 

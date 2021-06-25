@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import "./Item.css"
 import {Card, Button} from "react-bootstrap";
 
@@ -10,10 +10,7 @@ const Item = ({itemArray}) => {
         <Card.Img variant="top" src={itemArray.pictureUrl} />
         <Card.Body>
             <Card.Title>{itemArray.title}</Card.Title>
-            <Card.Text>
-                {itemArray.description}
-            </Card.Text>
-            <Button variant="primary">DETALLES PRODUCTO</Button>
+            <Card.Title>${itemArray.price}</Card.Title>
         </Card.Body>
         </Card>
         </>
