@@ -1,9 +1,17 @@
-import React from "react";
-import {Card, Button} from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Button } from "react-bootstrap";
 import ItemCount from "../ItemCount/ItemCount";
 
-
 function ItemDetail({ arrayProduct }) {
+    const [stock, setStock] = useState(5);
+    const [finalOrder, setFinalOrder] = useState(0);
+    const [finishOrder, setFinishOrder] = useState(false);
+
+    const onAdd = (quantitytToAdd) => {
+        setFinalOrder(quantitytToAdd);
+        setFinishOrder(true);
+    }
+
     return (
         <>
             <Card style={{ width: "18rem" }}>
@@ -13,7 +21,7 @@ function ItemDetail({ arrayProduct }) {
                     <Card.Title>${arrayProduct.price}</Card.Title>
                     <Card.Subtitle>{arrayProduct.category}</Card.Subtitle>
                     <Card.Text>{arrayProduct.description}</Card.Text>
-                    <ItemCount stock={5} initial={1}/>
+                    {!finishOrder && <ItemCount stock={5} initial={1} />}
                 </Card.Body>
             </Card>
         </>

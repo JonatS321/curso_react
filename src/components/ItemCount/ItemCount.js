@@ -1,6 +1,7 @@
 import React, { Component, useState } from "react";
 import "./ItemCount.css";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 //class ItemCount2 extends Component {
 //    constructor() {
@@ -29,8 +30,9 @@ import { Button } from "react-bootstrap";
 //    }
 //};
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial  }) => {
     const [orden, setOrden] = useState(initial);
+    const [emptyOrder, setEmptyOrder] = useState(true);
 
     const handleCounterUp = () => {
         if (orden < stock) {
@@ -44,18 +46,28 @@ const ItemCount = ({ stock, initial }) => {
         }
     };
 
-    const onAdd = () => {
+    const onAdd = (e) => {
+        console.log(e)
+        e.preventDefault();
         alert("Agrego al carrito " + orden);
+        setEmptyOrder(!emptyOrder);
     };
 
     return (
-        <div className="itemCount">
-            <Button onClick={handleCounterDown}> - </Button>
-            <span>{orden}</span>
-            <Button onClick={handleCounterUp}> + </Button>
-            <Button onClick={onAdd}>Agregar al carrito</Button>
+        <div>
+            {console.log(orden)}
+            {emptyOrder && (
+                <div className="itemCount">
+                    <Button onClick={handleCounterDown}> - </Button>
+                    <span>{orden}</span>
+                    <Button onClick={handleCounterUp}> + </Button>
+                    <Button onClick={onAdd}>Agregar al carrito</Button>
+                </div>
+            )}
         </div>
     );
 };
 
 export default ItemCount;
+
+//<Link to="/cart"><Button onClick={onAdd}>Agregar al carrito</Button></Link>
