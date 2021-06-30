@@ -1,7 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./ItemCount.css";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 //class ItemCount2 extends Component {
 //    constructor() {
@@ -30,44 +29,40 @@ import { Link } from "react-router-dom";
 //    }
 //};
 
-const ItemCount = ({ stock, initial  }) => {
-    const [orden, setOrden] = useState(initial);
+const ItemCount = ({ stock, initial, onAdd }) => {
+    // Modificar el initial segun el stock disponible (LUego)
+    const [order, setOrder] = useState(initial);
     const [emptyOrder, setEmptyOrder] = useState(true);
 
     const handleCounterUp = () => {
-        if (orden < stock) {
-            setOrden(orden + 1);
+        if (order < stock) {
+            setOrder(order + 1);
         }
     };
 
     const handleCounterDown = () => {
-        if (orden > 1) {
-            setOrden(orden - 1);
+        if (order > 1) {
+            setOrder(order - 1);
         }
     };
 
-    const onAdd = (e) => {
-        console.log(e)
-        e.preventDefault();
-        alert("Agrego al carrito " + orden);
-        setEmptyOrder(!emptyOrder);
-    };
+    //const {handleAddOn} = order;
+    //const onAdd = () => {
+    //    this.order
+    //    alert("Agrego al carrito " + order);
+    //    setEmptyOrder(!emptyOrder);
+    //};
 
     return (
         <div>
-            {console.log(orden)}
-            {emptyOrder && (
-                <div className="itemCount">
-                    <Button onClick={handleCounterDown}> - </Button>
-                    <span>{orden}</span>
-                    <Button onClick={handleCounterUp}> + </Button>
-                    <Button onClick={onAdd}>Agregar al carrito</Button>
-                </div>
-            )}
+            <div className="itemCount">
+                <Button onClick={handleCounterDown}> - </Button>
+                <span>{order}</span>
+                <Button onClick={handleCounterUp}> + </Button>
+                <Button onClick={() => onAdd(order)}>Agregar al carrito</Button>
+            </div>
         </div>
     );
 };
 
 export default ItemCount;
-
-//<Link to="/cart"><Button onClick={onAdd}>Agregar al carrito</Button></Link>
