@@ -4,16 +4,18 @@ import "./App.css";
 
 import Header from "./components/Header/Header";
 import NavBar from "./components/NavBar/NavBar";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 
 import Home from "./views/Home/Home";
 import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer";
 import Category from "./views/Category/Category"
 import CartContainer from "./views/CartContainer/CartContainer"
 
+import { CartProvider } from "./context/CartContext";
+
 class App extends Component {
     render() {
         return (
+            <CartProvider>
             <Router>
                 <div className="App">
                     <Header />
@@ -26,6 +28,7 @@ class App extends Component {
                     </Switch>
                 </div>
             </Router>
+            </CartProvider>
         );
     }
 }

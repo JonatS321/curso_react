@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
 import { Card, Button } from "react-bootstrap";
 import ItemCount from "../ItemCount/ItemCount";
 import {Link} from "react-router-dom";
+import {CartContext} from "../../context/CartContext"
 
 function ItemDetail({ arrayProduct }) {
     const [stock, setStock] = useState(5); // Esto debe venir por arrayProduct - debo ponerlo en el API
@@ -9,16 +10,17 @@ function ItemDetail({ arrayProduct }) {
     // No se si conviene usar el numero de stock como condicional para terminar el pedido del item o 
     // la constante finishOrder  booleana de abajo para terminar.
     //const [finishOrder, setFinishOrder] = useState(false);
+    const [items, setItems, addItem, removeItem, clear, hola] = useContext(CartContext);
 
     const onAdd = (quantitytToAdd) => {
-        setFinalOrder(quantitytToAdd);
-        //setFinishOrder(true);
-        console.log(finalOrder + " ITEMS DE PEDIDO");
-        console.log(quantitytToAdd);
+        setFinalOrder(quantitytToAdd)
+        addItem(arrayProduct, quantitytToAdd);
     };
 
-    console.log(finalOrder)
-    console.log(finalOrder !== 0 )
+    const showItems = () => {
+        console.log(items);
+        console.log(items.lenght);
+    }
 
     return (
         <>
@@ -35,6 +37,8 @@ function ItemDetail({ arrayProduct }) {
                         <Button><Link to="/cart">Terminar compra?</Link></Button> 
                         //Eliminar boton cuando cree el style de link
                     )}
+                    <Button onClick={showItems}>CARRITO CONSOLE</Button>
+                    
                 </Card.Body>
             </Card>
         </>

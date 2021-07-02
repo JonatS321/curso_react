@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 import { Button } from "react-bootstrap";
+import {CartContext} from "../../context/CartContext"
 
 //class ItemCount2 extends Component {
 //    constructor() {

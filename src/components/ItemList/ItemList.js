@@ -16,7 +16,7 @@ const ItemList = ({ category = "" }) => {
                         (res) => setItems(res.data)
                     )
                 );
-            }, 2000);
+            }, 2);
         });
     }, []);
 
