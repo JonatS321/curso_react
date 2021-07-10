@@ -33,7 +33,7 @@ const CartWidget = () => {
         <>
             {emptyCart() === true ? null : (
                 <span>
-                    {totalItems()} <FontAwesomeIcon icon={faCartPlus} />{" "}
+                    {totalItems()} <FontAwesomeIcon icon={faCartPlus} />
                 </span>
             )}
         </>
@@ -42,4 +42,3 @@ const CartWidget = () => {
 
 export default CartWidget;
 
-//{emptyCart() ? null : <FontAwesomeIcon icon={faCartPlus} /> + <div>qweq</div>}
