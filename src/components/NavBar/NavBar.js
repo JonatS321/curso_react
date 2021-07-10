@@ -1,6 +1,6 @@
 import React from "react";
 import "./NavBar.css";
-import CartWidget from "../CartWidget";
+import CartWidget from "../CartWidget/CartWidget";
 //import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -24,7 +24,7 @@ class NavBar extends React.Component {
                     <Link className="link" to="/category/monitores">MONITORES</Link>
                 </li>
                 <li>
-                    <Link className="link" to="/cart_widget">
+                    <Link className="link" to="/cart">
                         <CartWidget />
                     </Link>
                 </li>

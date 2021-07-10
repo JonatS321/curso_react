@@ -3,7 +3,6 @@ import "./Category.css";
 import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
 
 function Category({ match }) {
-	console.log(match)
     const category_chosen = match.params.id;
     return (
         <div>
