@@ -7,14 +7,13 @@ import { db } from "../../firebase";
 
 const ItemDetailContainer = ({ match }) => {
     let id = match.params.id;
-    const [item, setItem] = useState([]);
+    const [item, setItem] = useState({});
 
     const getItem = () => {
         db.collection("products").onSnapshot((querySnapshot) => {
-            const products = [];
-            querySnapshot.forEach((item) => {
-                if (item.id === id) {
-                    setItem(item.data());
+            querySnapshot.forEach((product) => {
+                if (product.id === id) {
+                    setItem({...product.data(), id: product.id});
                 }
             });
         });

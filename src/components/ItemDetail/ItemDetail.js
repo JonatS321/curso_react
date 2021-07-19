@@ -10,7 +10,7 @@ function ItemDetail({ arrayProduct }) {
     // No se si conviene usar el numero de stock como condicional para terminar el pedido del item o
     // la constante finishOrder  booleana de abajo para terminar.
     //const [finishOrder, setFinishOrder] = useState(false);
-    const [                cartItems,
+    const [cartItems,
         setCartItems,
         addItem,
         removeItem,
@@ -18,7 +18,7 @@ function ItemDetail({ arrayProduct }) {
         isInCart,
         totalPrice,
         totalItems,
-        emptyCart] =
+        emptyCart, getResumeCart] =
         useContext(CartContext);
 
     const onAdd = (quantitytToAdd) => {
@@ -37,6 +37,7 @@ function ItemDetail({ arrayProduct }) {
         console.log(totalPrice());
         console.log("EL CARRITO ESTA VACIO?:");
         console.log(emptyCart());
+        console.log(getResumeCart())
     };
 
     const eliminateProduct = () => {

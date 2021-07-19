@@ -30,7 +30,7 @@ const OrderForm = () => {
     const [newBuyer, setNewBuyer] = useState([]);
     const [order, setOrder] = useState(initialOrder);
 
-    const handleOnSubmit = (e) => {
+    const handleOnSubmit = async (e) => {
         e.preventDefault();
         setOrder({
             ...order,
@@ -40,7 +40,7 @@ const OrderForm = () => {
             buyer: newBuyer,
         });
         console.log(order);
-         db
+        await db
             .collection("orders")
             .add(order)
             .then((docRef) => {

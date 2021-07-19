@@ -1,6 +1,6 @@
 import React from "react";
 import "./Item.css"
-import {Card, Button} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 
 
 const Item = ({itemArray}) => {

@@ -6,10 +6,14 @@ export const CartProvider = (props) => {
     const [cartItems, setCartItems] = useState([]);
 
     const addItem = (dataItem, quantity) => {
+        console.log(dataItem, quantity);
         if (isInCart(dataItem.id)) {
-            console.log("ITEM REPETIDO")
-            let indexItem =  cartItems.findIndex( item => item.dataItem.id === dataItem.id)
-            cartItems[indexItem].quantity  = cartItems[indexItem].quantity + quantity
+            console.log("ITEM REPETIDO");
+            let indexItem = cartItems.findIndex(
+                (item) => item.dataItem.id === dataItem.id
+            );
+            cartItems[indexItem].quantity =
+                cartItems[indexItem].quantity + quantity;
         } else {
             console.log("ITEM ID: " + dataItem.id);
             setCartItems([...cartItems, { dataItem, quantity }]);
@@ -17,8 +21,7 @@ export const CartProvider = (props) => {
         }
         console.log(cartItems);
     };
-    
-    
+
     const removeItem = (itemId) => {
         const itemsClean = cartItems.filter(
             (itemInCar) => itemInCar.dataItem.id !== itemId
@@ -35,13 +38,6 @@ export const CartProvider = (props) => {
     };
 
     const isInCart = (itemId) => {
-        //ESTO LO TENGO QUE MODIFICAR PORQUE LO INTENTE HACER CON TRUE/FALSE PERO NO
-        //LOGRABA QUE FUNCIONARA
-        //        console.log(
-        //            cartItems.filter((itemInCar) => itemInCar.item.id === itemId).length
-        //        );
-        //        return cartItems.filter((itemInCar) => itemInCar.item.id === itemId)
-        //            .length;
         let filterArrayLength = cartItems.filter(
             (itemInCar) => itemInCar.dataItem.id === itemId
         ).length;
@@ -72,7 +68,17 @@ export const CartProvider = (props) => {
         }
     };
 
-
+    const getResumeCart = () => {
+        let resumeCart = [];
+        //cartItems.map((item) => resumeCart.push[ item.dataItem}])
+        //return resumeCart
+        //item.dataItem.title, item.dataItem.price, item.dataItem.id
+        return cartItems.map((item) => ({
+            title: item.dataItem.title,
+            price: item.dataItem.price,
+            id: item.dataItem.id,
+        }));
+    };
 
     return (
         <CartContext.Provider
@@ -85,7 +91,8 @@ export const CartProvider = (props) => {
                 isInCart,
                 totalPrice,
                 totalItems,
-                emptyCart
+                emptyCart,
+                getResumeCart,
             ]}
         >
             {props.children}

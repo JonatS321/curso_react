@@ -15,11 +15,11 @@ const ItemList = ({ category = "" }) => {
         db.collection("products").onSnapshot((doc) => {
             const items = [];
             doc.forEach((docu) => {
-                items.push({ ...docu.data(), id: docu.id });
-                console.log(docu.data(), docu.id);
+                items.push({ ...docu.data(), id:docu.id });
             });
-            console.log(items);
             setItems(items);
+            console.log(items);
+
         });
 
     // No me dejo almacenar "setItems(filtered_items)"
@@ -32,6 +32,7 @@ const ItemList = ({ category = "" }) => {
 
     useEffect(() => {
         getItems();
+
     }, []);
 
     //    useEffect(() => {
@@ -47,10 +48,11 @@ const ItemList = ({ category = "" }) => {
     //    }, []);
 
     return (
+
         <div className="ItemList">
-            {filtered_items.map((producto) => (
-                <Link className="link" to={`/item/${producto.id}`}>
-                    <Item key={producto.id} itemArray={producto} />
+            {filtered_items.map((product) => (
+                <Link className="link" to={`/item/${product.id}`}>
+                    <Item key={product.id} itemArray={product} />
                 </Link>
             ))}
         </div>

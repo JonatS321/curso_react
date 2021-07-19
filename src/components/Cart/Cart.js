@@ -21,18 +21,28 @@ const Cart = () => {
         <>
             {emptyCart() === true ? (
                 <>
-                <div>CARRITO VACIO</div>
-                <Link to="/"><Button>VOLVER AL INICIO</Button></Link>
+                    <div>CARRITO VACIO</div>
+                    <Link to="/">
+                        <Button>VOLVER AL INICIO</Button>
+                    </Link>
                 </>
             ) : (
-                <ListGroup>
-                    {cartItems.map((item) => (
-                        <ListGroupItem>
-                            {item.dataItem.title} ${item.dataItem.price}
-                            CANTIDAD: {item.quantity} <Button onClick={()=>removeItem(item.dataItem.id)}>ELIMINAR ITEM</Button>
-                        </ListGroupItem>
-                    ))}
-                </ListGroup>
+                <div>
+                    <ListGroup>
+                        {cartItems.map((item) => (
+                            <ListGroupItem>
+                                {item.dataItem.title} ${item.dataItem.price}
+                                CANTIDAD: {item.quantity}{" "}
+                                <Button
+                                    onClick={() => removeItem(item.dataItem.id)}
+                                >
+                                    ELIMINAR ITEM
+                                </Button>
+                            </ListGroupItem>
+                        ))}
+                    </ListGroup>
+                    <Button><Link to="/order">FINALIZAR COMPRA</Link></Button>
+                </div>
             )}
         </>
     );
