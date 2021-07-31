@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { db } from "../../firebase";
+import { fb } from "../../firebase";
 import { CartContext } from "../../context/CartContext";
 import { Form, Button } from "react-bootstrap";
 import firebase from "firebase/app";
@@ -19,12 +19,15 @@ const OrderForm = () => {
         emptyCart,
         getResumeCart,
     ] = useContext(CartContext);
+    const db = fb.firestore();
 
+    
     const initialOrder = {
         items: [],
         buyer: [],
         date: "",
         total: "",
+        state: "generate"
     };
 
     const [newBuyer, setNewBuyer] = useState([]);

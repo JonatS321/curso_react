@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
-import { db } from "../../firebase";
+import { fb } from "../../firebase";
 
 //No encontre la manera de que me devolviera un solo producto
 //usando lo visto en clase, debo haber creado mal el API
@@ -8,6 +8,7 @@ import { db } from "../../firebase";
 const ItemDetailContainer = ({ match }) => {
     let id = match.params.id;
     const [item, setItem] = useState({});
+    const db = fb.firestore();
 
     const getItem = () => {
         db.collection("products").onSnapshot((querySnapshot) => {

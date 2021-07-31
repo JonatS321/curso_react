@@ -10,7 +10,6 @@ import ItemDetailContainer from "./views/ItemDetailContainer/ItemDetailContainer
 import Category from "./views/Category/Category"
 import CartContainer from "./views/CartContainer/CartContainer"
 import OrderView from "./views/OrderView/OrderView";
-
 import { CartProvider } from "./context/CartContext";
 
 class App extends Component {
