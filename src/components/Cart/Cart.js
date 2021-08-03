@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import { Card, Button, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Button, ListGroup, ListGroupItem } from "react-bootstrap";
 
 const Cart = () => {
     //REACOMODANDO EL ORDEN DE CONTEXT PUDE SOLUCIONAR EL ERROR DE QUE SE ME CRUZABAN LAS FUNCIONES

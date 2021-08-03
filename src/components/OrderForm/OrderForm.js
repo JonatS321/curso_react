@@ -3,7 +3,6 @@ import { fb } from "../../firebase";
 import { CartContext } from "../../context/CartContext";
 import { Form, Button } from "react-bootstrap";
 import firebase from "firebase/app";
-
 import "firebase/firestore";
 
 const OrderForm = () => {
@@ -21,19 +20,29 @@ const OrderForm = () => {
     ] = useContext(CartContext);
     const db = fb.firestore();
 
-    
+    const [newBuyer, setNewBuyer] = useState({
+        name: "",
+        lastName: "",
+        phone: "",
+        email: "",
+    });
+
     const initialOrder = {
         items: [],
-        buyer: [],
+        buyer: newBuyer,
         date: "",
-        total: "",
-        state: "generate"
+        total: 0,
+        state: "generate",
     };
 
-    const [newBuyer, setNewBuyer] = useState([]);
     const [order, setOrder] = useState(initialOrder);
 
-    const handleOnSubmit = async (e) => {
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        setNewBuyer({ ...newBuyer, [name]: value });
+    };
+
+    const handleOnSubmit = (e) => {
         e.preventDefault();
         setOrder({
             ...order,
@@ -42,30 +51,13 @@ const OrderForm = () => {
             total: totalPrice(),
             buyer: newBuyer,
         });
-        console.log(order);
-        await db
-            .collection("orders")
+        db.collection("orders")
             .add(order)
             .then((docRef) => {
                 alert("ID DE NUMERO DE COMPRA: " + docRef.id);
             });
-    };
-
-    const handleOnChange = (e) => {
-        const { name, value } = e.target;
-        console.log(name, value);
-        setNewBuyer({ ...newBuyer, [name]: value });
-    };
-
-    const vieww = () => {
-        setOrder({
-            ...order,
-            items: getResumeCart(),
-            date: firebase.firestore.Timestamp.fromDate(new Date()),
-            total: totalPrice(),
-            buyer: newBuyer,
-        });
-        console.log(order);
+        setOrder({ ...initialOrder });
+        setNewBuyer({ name: "", lastName: "", phone: "", email: "" });
     };
 
     return (
@@ -78,7 +70,7 @@ const OrderForm = () => {
                         placeholder="Nombre"
                         name="name"
                         onChange={handleOnChange}
-                        value={order.name}
+                        value={newBuyer.name}
                     />
                     <Form.Label>Apellido</Form.Label>
                     <Form.Control
@@ -86,7 +78,7 @@ const OrderForm = () => {
                         placeholder="Apellido"
                         name="lastName"
                         onChange={handleOnChange}
-                        value={order.lastname}
+                        value={newBuyer.lastName}
                     />
                     <Form.Label>Telefono</Form.Label>
                     <Form.Control
@@ -94,7 +86,7 @@ const OrderForm = () => {
                         placeholder="Telefono fijo o celular"
                         name="phone"
                         onChange={handleOnChange}
-                        value={order.phone}
+                        value={newBuyer.phone}
                     />
                     <Form.Label>Direccion email</Form.Label>
                     <Form.Control
@@ -102,13 +94,12 @@ const OrderForm = () => {
                         placeholder="Email"
                         name="email"
                         onChange={handleOnChange}
-                        value={order.email}
+                        value={newBuyer.email}
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     FINALIZAR PEDIDO
                 </Button>
-                <Button onClick={vieww}>VER ORDEN</Button>
             </Form>
         </div>
     );
@@ -116,16 +107,45 @@ const OrderForm = () => {
 
 export default OrderForm;
 
-//const handleOnSubmit = async (e) => {
-//    e.preventDefault();
-//    setOrder({
-//        ...order,
-//        items: cartItems,
-//        date: firebase.firestore.Timestamp.fromDate(new Date()),
-//        total: totalPrice(),
-//        buyer: newBuyer,
-//    });
-//    await db.collection("orders").doc().set(order);
-//    setOrder({ ...initialOrder });
-//    setNewBuyer([])
-//};
+//<div>
+//<Form onSubmit={handleOnSubmit}>
+//    <Form.Group className="mb-3">
+//        <Form.Label>Nombre</Form.Label>
+//        <Form.Control
+//            type="text"
+//            placeholder="Nombre"
+//            name="name"
+//            onChange={handleOnChange}
+//            value={order.name}
+//        />
+//        <Form.Label>Apellido</Form.Label>
+//        <Form.Control
+//            type="text"
+//            placeholder="Apellido"
+//            name="lastName"
+//            onChange={handleOnChange}
+//            value={order.lastname}
+//        />
+//        <Form.Label>Telefono</Form.Label>
+//        <Form.Control
+//            type="text"
+//            placeholder="Telefono fijo o celular"
+//            name="phone"
+//            onChange={handleOnChange}
+//            value={order.phone}
+//        />
+//        <Form.Label>Direccion email</Form.Label>
+//        <Form.Control
+//            type="text"
+//            placeholder="Email"
+//            name="email"
+//            onChange={handleOnChange}
+//            value={order.email}
+//        />
+//    </Form.Group>
+//    <Button variant="primary" type="submit">
+//        FINALIZAR PEDIDO
+//    </Button>
+//    <Button onClick={vieww}>VER ORDEN</Button>
+//</Form>
+//</div>

@@ -20,13 +20,6 @@ const ItemDetailContainer = ({ match }) => {
         });
     };
     
-    //    useEffect(() => {
-    //        setTimeout(() => {
-    //            fetch(`https://demo2045556.mockable.io/productos`)
-    //            .then((response) => response.json())
-    //            .then((data) => setItem(data[id-1]));
-    //        }, 20);
-    //    }, []);
 
     useEffect(() => {
         getItem();

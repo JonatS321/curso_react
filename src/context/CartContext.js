@@ -60,7 +60,6 @@ export const CartProvider = (props) => {
     };
 
     const emptyCart = () => {
-        //return (cartItems === []);
         if (cartItems.length === 0) {
             return true;
         } else {
@@ -69,10 +68,7 @@ export const CartProvider = (props) => {
     };
 
     const getResumeCart = () => {
-        let resumeCart = [];
-        //cartItems.map((item) => resumeCart.push[ item.dataItem}])
-        //return resumeCart
-        //item.dataItem.title, item.dataItem.price, item.dataItem.id
+
         return cartItems.map((item) => ({
             title: item.dataItem.title,
             price: item.dataItem.price,

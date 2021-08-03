@@ -1,8 +1,6 @@
 import React from "react";
 import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
-import Authentication from "../Authentication/Authentication";
-import { Navbar, Nav, Container} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class NavBar extends React.Component {
@@ -15,30 +13,26 @@ class NavBar extends React.Component {
                     </Link>
                 </li>
                 <li>
-                    <Link className="link" to="/category/procesadores">
+                    <Link className="link" to="/categories/procesadores">
                         PROCESADORES
                     </Link>
                 </li>
                 <li>
-                    <Link className="link" to="/category/memoria_ram">
+                    <Link className="link" to="/categories/memoria_ram">
                         MEMORIAS RAM
                     </Link>
                 </li>
                 <li>
-                    <Link className="link" to="/category/discos_duros">
+                    <Link className="link" to="/categories/discos_duros">
                         DISCOS DUROS
                     </Link>
                 </li>
                 <li>
-                    <Link className="link" to="/category/monitores">
+                    <Link className="link" to="/categories/monitores">
                         MONITORES
                     </Link>
                 </li>
-                <li>
-                    <Link className="link" to="/login">
-                        <Authentication />
-                    </Link>
-                </li>
+
                 <li>
                     <Link className="link" to="/cart">
                         <CartWidget />

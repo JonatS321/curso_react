@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 import { Button } from "react-bootstrap";
-import {CartContext} from "../../context/CartContext"
 
 //class ItemCount2 extends Component {
 //    constructor() {
@@ -33,7 +32,6 @@ import {CartContext} from "../../context/CartContext"
 const ItemCount = ({ stock, initial, onAdd }) => {
     // Modificar el initial segun el stock disponible (LUego)
     const [order, setOrder] = useState(initial);
-    const [emptyOrder, setEmptyOrder] = useState(true);
 
     const handleCounterUp = () => {
         if (order < stock) {
@@ -46,13 +44,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             setOrder(order - 1);
         }
     };
-
-    //const {handleAddOn} = order;
-    //const onAdd = () => {
-    //    this.order
-    //    alert("Agrego al carrito " + order);
-    //    setEmptyOrder(!emptyOrder);
-    //};
 
     return (
         <div>
